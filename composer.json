@@ -1,0 +1,14 @@
+{
+    "name": "nadya/dblabka",
+    "require": {
+        "slim/slim": "4.*",
+        "slim/psr7": "^1.5",
+        "vlucas/phpdotenv": "^5.4",
+        "ext-pdo": "*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    }
+}
