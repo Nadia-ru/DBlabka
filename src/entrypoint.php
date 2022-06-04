@@ -15,7 +15,6 @@ class Entrypoint {
         Dotenv::createImmutable(dirname(__DIR__))->load();
         $app = AppFactory::create();
         $app->add(array($this, 'authenticate'));
-//        phpinfo();
         $pdo = new PDO(
             dsn: "mysql:host={$_ENV['DB_HOST']};port={$_ENV['DB_PORT']};dbname={$_ENV['DB_NAME']}",
             username: $_ENV['DB_USERNAME'],
@@ -25,14 +24,15 @@ class Entrypoint {
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             )
         );
-        phpinfo();
 
         $app->any('/ping', function(Request $request, Response $response) {
             $response->getBody()->write('meow');
             return $response;
         });
+
         $app->post('/admin/initDatabase', function(Request $request, Response $response){
-            return $this->response($response);
+            if (!$request->getAttribute('admin')) return $this->response($response, ['status' => 'нет подключения'],403);
+            return $this->response($response, ['status' => 'OK'],201);
         });
         $app->run();
     }
