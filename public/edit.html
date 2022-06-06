@@ -37,43 +37,44 @@
         align-items: center;
         flex-direction: column;
 ">
-    <button type="button" class="btn btn-outline-primary" style="max-width: 200px">add</button>
-    <table class="table table-success table-hover" style="max-width: 1000px">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Имя</th>
-            <th scope="col">Фамилия</th>
-            <th scope="col">Обращение</th>
-            <th scope="col">Действия</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td><div class="btn-group  btn-group-sm" role="group" aria-label="Basic mixed styles example">
-                <button type="button" class="btn btn-outline-primary">update</button>
-                <button type="button" class="btn btn-outline-primary">delete</button>
+    <form class="row g-3" style="max-width: 800px">
+        <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">Эл. адрес</label>
+            <input type="email" class="form-control" id="inputEmail4">
+        </div>
+        <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">Пароль</label>
+            <input type="password" class="form-control" id="inputPassword4">
+        </div>
+        <div class="col-12">
+            <label for="inputAddress" class="form-label">Адрес</label>
+            <input type="text" class="form-control" id="inputAddress" placeholder="Проспект Ленина">
+        </div>
+        <div class="col-12">
+            <label for="inputAddress2" class="form-label">Адрес 2</label>
+            <input type="text" class="form-control" id="inputAddress2" placeholder="Квартира">
+        </div>
+        <div class="col-md-6">
+            <label for="inputCity" class="form-label">Город</label>
+            <input type="text" class="form-control" id="inputCity" placeholder="Брянск">
+        </div>
+        <div class="col-md-4">
+            <label for="inputState" class="form-label">Область</label>
+            <select id="inputState" class="form-select">
+                <option selected>Выберите...</option>
+                <option>...</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label for="inputZip" class="form-label">Индекс</label>
+            <input type="text" class="form-control" id="inputZip">
+        </div>
 
 
-            </div></td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-        </tr>
-        </tbody>
-    </table>
+    </form>
+
+    <button type="button" class="btn btn-outline-primary" style="max-width: 200px; margin-top: 50px ">add</button>
+
 </div>
 
 </body>

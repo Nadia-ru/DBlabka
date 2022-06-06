@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3307
--- Время создания: Июн 04 2022 г., 15:55
+-- Время создания: Июн 06 2022 г., 17:26
 -- Версия сервера: 8.0.19
 -- Версия PHP: 8.0.1
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: ` travel_agency`
+-- База данных: `travel_agency`
 --
 
 -- --------------------------------------------------------
@@ -49,6 +49,15 @@ CREATE TABLE `city` (
   `city_title` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Дамп данных таблицы `city`
+--
+
+INSERT INTO `city` (`id`, `country`, `city_title`) VALUES
+(1, 'Франция', 'Париж'),
+(2, 'Россия', 'Москва'),
+(3, 'Fed', 'XEP');
+
 -- --------------------------------------------------------
 
 --
@@ -75,6 +84,13 @@ CREATE TABLE `excursion` (
   `id_city` int NOT NULL,
   `price` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Дамп данных таблицы `excursion`
+--
+
+INSERT INTO `excursion` (`id`, `location`, `id_city`, `price`) VALUES
+(1, 'Всё равно твоя мамка', 1, '13.99');
 
 -- --------------------------------------------------------
 
@@ -111,6 +127,7 @@ CREATE TABLE `voucher` (
 --
 
 CREATE TABLE `voucher_accommodation` (
+  `id` int NOT NULL,
   `id_voucher` int NOT NULL,
   `id_accomadation` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -122,6 +139,7 @@ CREATE TABLE `voucher_accommodation` (
 --
 
 CREATE TABLE `voucher_excursion` (
+  `id` int NOT NULL,
   `id_voucher` int NOT NULL,
   `id_excursion` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -133,6 +151,7 @@ CREATE TABLE `voucher_excursion` (
 --
 
 CREATE TABLE `voucher_travel` (
+  `id` int NOT NULL,
   `id_voucher` int NOT NULL,
   `id_travel` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -186,6 +205,7 @@ ALTER TABLE `voucher`
 -- Индексы таблицы `voucher_accommodation`
 --
 ALTER TABLE `voucher_accommodation`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `id_voucher` (`id_voucher`),
   ADD KEY `id_accomadation` (`id_accomadation`);
 
@@ -193,6 +213,7 @@ ALTER TABLE `voucher_accommodation`
 -- Индексы таблицы `voucher_excursion`
 --
 ALTER TABLE `voucher_excursion`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `id_voucher` (`id_voucher`),
   ADD KEY `id_excursion` (`id_excursion`);
 
@@ -200,6 +221,7 @@ ALTER TABLE `voucher_excursion`
 -- Индексы таблицы `voucher_travel`
 --
 ALTER TABLE `voucher_travel`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `id_voucher` (`id_voucher`),
   ADD KEY `id_travel` (`id_travel`);
 
@@ -217,7 +239,7 @@ ALTER TABLE `accommodation`
 -- AUTO_INCREMENT для таблицы `city`
 --
 ALTER TABLE `city`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `customer`
@@ -229,7 +251,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT для таблицы `excursion`
 --
 ALTER TABLE `excursion`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `travel`
@@ -241,6 +263,24 @@ ALTER TABLE `travel`
 -- AUTO_INCREMENT для таблицы `voucher`
 --
 ALTER TABLE `voucher`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT для таблицы `voucher_accommodation`
+--
+ALTER TABLE `voucher_accommodation`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT для таблицы `voucher_excursion`
+--
+ALTER TABLE `voucher_excursion`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT для таблицы `voucher_travel`
+--
+ALTER TABLE `voucher_travel`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
