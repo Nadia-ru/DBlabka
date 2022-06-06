@@ -37,41 +37,19 @@
         align-items: center;
         flex-direction: column;
 ">
-    <button type="button" class="btn btn-outline-primary" style="max-width: 200px">add</button>
+    <button id="add_id" type="button" class="btn btn-outline-primary" style="max-width: 200px">add</button>
     <table class="table table-success table-hover" style="max-width: 1000px">
         <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Имя</th>
-            <th scope="col">Фамилия</th>
-            <th scope="col">Обращение</th>
-            <th scope="col">Действия</th>
+        <tr id="column_name">
+<!--            <th scope="col">#</th>-->
+<!--            <th scope="col">Имя</th>-->
+<!--            <th scope="col">Фамилия</th>-->
+<!--            <th scope="col">Обращение</th>-->
+<!--            <th scope="col">Действия</th>-->
         </tr>
         </thead>
-        <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td><div class="btn-group  btn-group-sm" role="group" aria-label="Basic mixed styles example">
-                <button type="button" class="btn btn-outline-primary">update</button>
-                <button type="button" class="btn btn-outline-primary">delete</button>
+        <tbody id="data_table">
 
-
-            </div></td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-        </tr>
         </tbody>
     </table>
 </div>
@@ -95,3 +73,31 @@
         flex-direction: column;
     }
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+
+    $(document).ready(function(){
+        $('#column_name').append("<th scope=\"col\">#</th>");
+        $('#column_name').append("<th scope=\"col\">страна</th>");
+        $('#column_name').append("<th scope=\"col\">город</th>");
+        $('#column_name').append("<th scope=\"col\">действия</th>");
+        $.get("http://localhost:8888/city/getAll", function(data, status){
+            for (const element of data) {
+                let stroka =`   <tr>
+            <td>${element.id}</td>
+            <td>${element.country}</td>
+            <td>${element.city_title}</td>
+            <td><div class="btn-group  btn-group-sm" role="group" aria-label="Basic mixed styles example">
+                <button type="button" class="btn btn-outline-primary">update</button>
+                <button type="button" class="btn btn-outline-primary">delete</button>
+            </div></td>
+        </tr>`;
+                $('#data_table').append(stroka);
+            }
+            console.log(data );
+
+        });
+
+
+    });
+</script>
